@@ -29,14 +29,14 @@ requirements:
   run_constrained:
     - jupyterlab >=4.0.0,<5
 
-tests:
-  - python:
-      imports:
-        - jupyterlab_commands_toolkit
-      pip_check: true
-    requirements:
-      run:
-        - python
+test:
+  imports:
+    - jupyterlab_commands_toolkit
+  requires:
+    - pip
+  commands:
+    - pip check
+    - python -c "from importlib.metadata import version; assert(version('{{ name }}')=='{{ version }}')"
 
 about:
   homepage: https://github.com/jupyter-ai-contrib/jupyterlab-commands-toolkit
