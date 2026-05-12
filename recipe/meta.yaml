@@ -26,6 +26,8 @@ requirements:
     - python
     - jupyter_server >=2.4.0,<3
     - jupyterlab-eventlistener
+  run_constrained:
+    - jupyterlab >=4.0.0,<5
 
 tests:
   - python:
