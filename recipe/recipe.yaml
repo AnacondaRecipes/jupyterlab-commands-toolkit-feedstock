@@ -10,20 +10,20 @@ source:
   sha256: e6f81a815e7247841ec875f9fa8c876a45fb13d38401589dd9dc3743e39beaea
 
 build:
-  noarch: python
-  script: python -m pip install . -vv
+  skip: true  # [py<39]
   number: 0
+  script: python -m pip install . -vv
 
 requirements:
   host:
-    - python ${{ python_min }}.*
+    - python
     - pip
     - hatchling >=1.5.0
     - jupyterlab >=4.0.0,<5
     - hatch-nodejs-version >=0.3.2
     - hatch-jupyter-builder >=0.5
   run:
-    - python >=${{ python_min }}
+    - python
     - jupyter_server >=2.4.0,<3
     - jupyterlab-eventlistener
 
@@ -34,7 +34,7 @@ tests:
       pip_check: true
     requirements:
       run:
-        - python ${{ python_min }}.*
+        - python
 
 about:
   homepage: https://github.com/jupyter-ai-contrib/jupyterlab-commands-toolkit
