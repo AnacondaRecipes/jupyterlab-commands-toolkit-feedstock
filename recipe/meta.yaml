@@ -1,0 +1,54 @@
+{% set name = "jupyterlab-commands-toolkit" %}
+{% set version = "0.1.6" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-','_') }}-{{ version }}.tar.gz
+  sha256: e6f81a815e7247841ec875f9fa8c876a45fb13d38401589dd9dc3743e39beaea
+
+build:
+  skip: true  # [py<39]
+  number: 0
+  script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
+
+requirements:
+  host:
+    - python
+    - pip
+    - hatchling >=1.5.0
+    - jupyterlab >=4.0.0,<5
+    - hatch-nodejs-version >=0.3.2
+    - hatch-jupyter-builder >=0.5
+  run:
+    - python
+    - jupyter_server >=2.4.0,<3
+    - jupyterlab-eventlistener
+  run_constrained:
+    - jupyterlab >=4.0.0,<5
+
+test:
+  imports:
+    - jupyterlab_commands_toolkit
+  requires:
+    - pip
+  commands:
+    - pip check
+    - python -c "from importlib.metadata import version; assert(version('{{ name }}')=='{{ version }}')"
+
+about:
+  home: https://github.com/jupyter-ai-contrib/jupyterlab-commands-toolkit
+  summary: JupyterLab commands as an AI Toolkit
+  description: A Jupyter extension that provides an AI toolkit for JupyterLab commands.
+  license: BSD-3-Clause
+  license_family: BSD
+  license_file: LICENSE
+  dev_url: https://github.com/jupyter-ai-contrib/jupyterlab-commands-toolkit
+  doc_url: https://jupyter-ai.readthedocs.io
+
+extra:
+  recipe-maintainers:
+    - dlqqq
+    - andrii-i
