@@ -39,12 +39,14 @@ test:
     - python -c "from importlib.metadata import version; assert(version('{{ name }}')=='{{ version }}')"
 
 about:
-  homepage: https://github.com/jupyter-ai-contrib/jupyterlab-commands-toolkit
-  summary: "JupyterLab commands as an AI Toolkit"
+  home: https://github.com/jupyter-ai-contrib/jupyterlab-commands-toolkit
+  summary: JupyterLab commands as an AI Toolkit
+  description: A Jupyter extension that provides an AI toolkit for JupyterLab commands.
   license: BSD-3-Clause
+  license_family: BSD
   license_file: LICENSE
-  documentation: https://jupyter-ai.readthedocs.io/
-  repository: https://github.com/jupyter-ai-contrib/jupyterlab-commands-toolkit
+  dev_url: https://github.com/jupyter-ai-contrib/jupyterlab-commands-toolkit
+  doc_url: https://jupyter-ai.readthedocs.io
 
 extra:
   recipe-maintainers:
