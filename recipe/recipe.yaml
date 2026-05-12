@@ -1,9 +1,9 @@
-context:
-  version: "0.1.6"
+{% set name = "jupyterlab-commands-toolkit" %}
+{% set version = "0.1.6" %}
 
 package:
-  name: jupyterlab-commands-toolkit
-  version: ${{ version }}
+  name: {{ name|lower }}
+  version: {{ version }}
 
 source:
   url: https://pypi.org/packages/source/j/jupyterlab-commands-toolkit/jupyterlab_commands_toolkit-${{ version }}.tar.gz
